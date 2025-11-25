@@ -10,6 +10,7 @@ session_start();
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Icons (Feather Icons CDN) -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <script>
     tailwind.config = {
