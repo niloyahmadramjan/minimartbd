@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# XAMPP / Local files
+/htdocs/minimardbd/tmp/
+/opt/lampp/htdocs/minimardbd/*.log
+*.pid
+*.sock
+
+# Composer vendor folder
+/vendor/
+
+# Node modules (if using JS)
+node_modules/
+
+# Environment files
+.env
