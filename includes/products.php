@@ -2,66 +2,107 @@
 <?php
 // Sample products data (later connect with MySQL)
 $products = [
-    [
+    1 => [
         'id' => 1,
         'name' => 'New Featured MacBook Pro',
-        'brand' => 'Cartify',
-        'desc' => 'With Apple M1 Pro Chip',
-        'price' => 200.00,
-        'old_price' => null,
-        'rating' => 4,
-        'reviews' => 3,
-        'image' => 'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/1-home_default/new-featured-macbook-pro.jpg',
-        'category' => 'electronics'
+        'brand' => 'Apple',
+        'desc' => 'With Apple M2 Pro Chip - 16GB RAM, 512GB SSD',
+        'price' => 1299.00,
+        'old_price' => 1499.00,
+        'rating' => 5,
+        'reviews' => 124,
+        'image' => 'assets/images/macbook.png',
+        'badge' => 'Best Seller',
+        'category' => 'laptops'
     ],
-    [
+    2 => [
         'id' => 2,
-        'name' => 'Rumbloo Silicone Controller Grip Cover for Oculus Quest 2',
-        'brand' => 'EcomZone',
-        'desc' => 'Comfortable grip & protection',
-        'price' => 130.00,
-        'old_price' => null,
+        'name' => 'Sony WH-1000XM5 Noise Cancelling Headphones',
+        'brand' => 'Sony',
+        'desc' => 'Industry Leading Noise Cancellation - 30hr Battery',
+        'price' => 349.99,
+        'old_price' => 399.99,
         'rating' => 5,
-        'reviews' => 2,
-        'image' => 'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/2-home_default/rumbloo-silicone-controller-grip-cover.jpg',
-        'category' => 'gadgets'
+        'reviews' => 892,
+        'image' => 'assets/images/item2.png',
+        'badge' => '-50% OFF',
+        'category' => 'headphones'
     ],
-    [
+    3 => [
         'id' => 3,
-        'name' => 'The best is yet to come Framed poster',
-        'brand' => 'EcoShop',
-        'desc' => 'Premium framed artwork',
-        'price' => 150.00,
-        'old_price' => null,
+        'name' => 'Apple Watch Series 9',
+        'brand' => 'Apple',
+        'desc' => 'GPS + Cellular - Always-On Retina Display',
+        'price' => 449.00,
+        'old_price' => 499.00,
         'rating' => 5,
-        'reviews' => 5,
-        'image' => 'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/3-home_default/the-best-is-yet-to-come-framed-poster.jpg',
-        'category' => 'gadgets'
+        'reviews' => 567,
+        'image' => 'assets/images/item1.png',
+        'badge' => 'New Arrival',
+        'category' => 'smartwatches'
     ],
-    [
+    4 => [
         'id' => 4,
-        'name' => 'Samsung QN85AA Series Neo QLED 4K UHD Smart TV',
-        'brand' => 'MegaMart',
-        'desc' => '85-inch Quantum HDR 32X',
-        'price' => 190.00,
-        'old_price' => null,
+        'name' => 'Razer Blade 16 Gaming Laptop',
+        'brand' => 'Razer',
+        'desc' => 'RTX 4080 - 240Hz QHD+ Display - RGB Keyboard',
+        'price' => 2799.00,
+        'old_price' => 3299.00,
         'rating' => 4,
-        'reviews' => 3,
-        'image' => 'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/4-home_default/samsung-qn85aa-series-neo-qled.jpg',
-        'category' => 'electronics'
+        'reviews' => 89,
+        'image' => 'assets/images/item3.png',
+        'badge' => 'Limited Stock',
+        'category' => 'laptops'
     ],
-    [
+    5 => [
         'id' => 5,
-        'name' => 'Apple AirPods Max Bluetooth Headset',
-        'brand' => 'SmartShop',
-        'desc' => 'Active Noise Cancellation',
-        'price' => 175.50,
-        'old_price' => 195.00,
+        'name' => 'Samsung Galaxy S24 Ultra',
+        'brand' => 'Samsung',
+        'desc' => '200MP Camera - S Pen - Titanium Frame',
+        'price' => 1199.00,
+        'old_price' => 1399.00,
         'rating' => 5,
-        'reviews' => 3,
-        'image' => 'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/5-home_default/apple-airpods-max.jpg',
-        'category' => 'headphones',
-        'countdown' => true
+        'reviews' => 1203,
+        'image' => 'assets/images/item4.png',
+        'badge' => 'Hot Deal',
+        'category' => 'smartphones'
+    ],
+    6 => [
+        'id' => 6,
+        'name' => 'Bose QuietComfort Ultra Earbuds',
+        'brand' => 'Bose',
+        'desc' => 'Spatial Audio - World-Class Noise Cancellation',
+        'price' => 299.00,
+        'old_price' => null,
+        'rating' => 5,
+        'reviews' => 412,
+        'image' => 'assets/images/earbuds.png',
+        'category' => 'headphones'
+    ],
+    7 => [
+        'id' => 7,
+        'name' => 'JBL Flip 6 Portable Speaker',
+        'brand' => 'JBL',
+        'desc' => 'Waterproof - 12hr Playtime - PartyBoost',
+        'price' => 129.99,
+        'old_price' => 149.99,
+        'rating' => 4,
+        'reviews' => 892,
+        'image' => 'assets/images/speaker.png',
+        'category' => 'speakers'
+    ],
+    8 => [
+        'id' => 8,
+        'name' => 'DJI Mini 4 Pro Drone',
+        'brand' => 'DJI',
+        'desc' => '4K 60fps - Under 249g - 34min Flight',
+        'price' => 759.00,
+        'old_price' => null,
+        'rating' => 5,
+        'reviews' => 234,
+        'image' => 'assets/images/drone.png',
+        'badge' => 'Trending',
+        'category' => 'cameras'
     ]
 ];
 ?>
@@ -70,14 +111,14 @@ $products = [
     <h2 class="text-4xl font-bold text-center mb-8">Trending Products</h2>
 
     <!-- Category Tabs -->
-    <div class="flex justify-center space-x-4 mb-10 flex-wrap">
+    <!-- <div class="flex justify-center space-x-4 mb-10 flex-wrap">
         <button class="px-8 py-3 rounded-full font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition">Electronics</button>
         <button class="px-8 py-3 rounded-full font-semibold bg-gray-200 hover:bg-gray-300 transition">Smart Devices</button>
         <button class="px-8 py-3 rounded-full font-semibold bg-gray-200 hover:bg-gray-300 transition">Gadgets</button>
-    </div>
+    </div> -->
 
     <!-- Products Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         <?php foreach ($products as $p): ?>
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition group">
                 <div class="relative">

@@ -3,11 +3,108 @@
 <?php
 // Dummy product data (real project e database theke niba)
 $products = [
-    1 => ['id'=>1, 'name'=>'New Featured MacBook Pro', 'brand'=>'Cartify', 'desc'=>'With Apple M1 Pro Chip', 'price'=>200.00, 'old_price'=>null, 'rating'=>4, 'reviews'=>3, 'image'=>'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/1-home_default/new-featured-macbook-pro.jpg'],
-    2 => ['id'=>2, 'name'=>'Rumbloo Silicone Controller Grip', 'brand'=>'EcomZone', 'desc'=>'For Oculus Quest 2', 'price'=>130.00, 'old_price'=>null, 'rating'=>5, 'reviews'=>2, 'image'=>'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/2-home_default/rumbloo-silicone-controller-grip-cover.jpg'],
-    3 => ['id'=>3, 'name'=>'The best is yet to come Framed poster', 'brand'=>'EcoShop', 'desc'=>'Premium artwork', 'price'=>150.00, 'old_price'=>null, 'rating'=>5, 'reviews'=>5, 'image'=>'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/3-home_default/the-best-is-yet-to-come-framed-poster.jpg'],
-    4 => ['id'=>4, 'name'=>'Samsung QN85AA Neo QLED TV', 'brand'=>'MegaMart', 'desc'=>'85-inch 4K Smart TV', 'price'=>190.00, 'old_price'=>null, 'rating'=>4, 'reviews'=>3, 'image'=>'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/4-home_default/samsung-qn85aa-series-neo-qled.jpg'],
-    5 => ['id'=>5, 'name'=>'Apple AirPods Max', 'brand'=>'SmartShop', 'desc'=>'Bluetooth Headset', 'price'=>175.50, 'old_price'=>195.00, 'rating'=>5, 'reviews'=>3, 'image'=>'https://prestashop.codezeel.com/PRS23/PRS230557/default/en/5-home_default/apple-airpods-max.jpg']
+    1 => [
+        'id' => 1,
+        'name' => 'New Featured MacBook Pro',
+        'brand' => 'Apple',
+        'desc' => 'With Apple M2 Pro Chip - 16GB RAM, 512GB SSD',
+        'price' => 1299.00,
+        'old_price' => 1499.00,
+        'rating' => 5,
+        'reviews' => 124,
+        'image' => 'assets/images/macbook.png',
+        'badge' => 'Best Seller',
+        'category' => 'laptops'
+    ],
+    2 => [
+        'id' => 2,
+        'name' => 'Sony WH-1000XM5 Noise Cancelling Headphones',
+        'brand' => 'Sony',
+        'desc' => 'Industry Leading Noise Cancellation - 30hr Battery',
+        'price' => 349.99,
+        'old_price' => 399.99,
+        'rating' => 5,
+        'reviews' => 892,
+        'image' => 'assets/images/item2.png',
+        'badge' => '-50% OFF',
+        'category' => 'headphones'
+    ],
+    3 => [
+        'id' => 3,
+        'name' => 'Apple Watch Series 9',
+        'brand' => 'Apple',
+        'desc' => 'GPS + Cellular - Always-On Retina Display',
+        'price' => 449.00,
+        'old_price' => 499.00,
+        'rating' => 5,
+        'reviews' => 567,
+        'image' => 'assets/images/item1.png',
+        'badge' => 'New Arrival',
+        'category' => 'smartwatches'
+    ],
+    4 => [
+        'id' => 4,
+        'name' => 'Razer Blade 16 Gaming Laptop',
+        'brand' => 'Razer',
+        'desc' => 'RTX 4080 - 240Hz QHD+ Display - RGB Keyboard',
+        'price' => 2799.00,
+        'old_price' => 3299.00,
+        'rating' => 4,
+        'reviews' => 89,
+        'image' => 'assets/images/item3.png',
+        'badge' => 'Limited Stock',
+        'category' => 'laptops'
+    ],
+    5 => [
+        'id' => 5,
+        'name' => 'Samsung Galaxy S24 Ultra',
+        'brand' => 'Samsung',
+        'desc' => '200MP Camera - S Pen - Titanium Frame',
+        'price' => 1199.00,
+        'old_price' => 1399.00,
+        'rating' => 5,
+        'reviews' => 1203,
+        'image' => 'assets/images/item4.png',
+        'badge' => 'Hot Deal',
+        'category' => 'smartphones'
+    ],
+    6 => [
+        'id' => 6,
+        'name' => 'Bose QuietComfort Ultra Earbuds',
+        'brand' => 'Bose',
+        'desc' => 'Spatial Audio - World-Class Noise Cancellation',
+        'price' => 299.00,
+        'old_price' => null,
+        'rating' => 5,
+        'reviews' => 412,
+        'image' => 'assets/images/earbuds.png',
+        'category' => 'headphones'
+    ],
+    7 => [
+        'id' => 7,
+        'name' => 'JBL Flip 6 Portable Speaker',
+        'brand' => 'JBL',
+        'desc' => 'Waterproof - 12hr Playtime - PartyBoost',
+        'price' => 129.99,
+        'old_price' => 149.99,
+        'rating' => 4,
+        'reviews' => 892,
+        'image' => 'assets/images/speaker.png',
+        'category' => 'speakers'
+    ],
+    8 => [
+        'id' => 8,
+        'name' => 'DJI Mini 4 Pro Drone',
+        'brand' => 'DJI',
+        'desc' => '4K 60fps - Under 249g - 34min Flight',
+        'price' => 759.00,
+        'old_price' => null,
+        'rating' => 5,
+        'reviews' => 234,
+        'image' => 'assets/images/drone.png',
+        'badge' => 'Trending',
+        'category' => 'cameras'
+    ]
 ];
 
 $id = $_GET['id'] ?? 1;
