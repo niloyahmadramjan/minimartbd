@@ -1,13 +1,18 @@
 # MiniMartBD
 
-[🔗 Live Link](http://minimartbd.ct.ws/)
+[![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Live Demo: [http://minimartbd.ct.ws](http://minimartbd.ct.ws)
 
 MiniMartBD is a **dynamic e-commerce website** built with PHP, MySQL, and Tailwind CSS. It allows users to browse products, manage a shopping cart, place orders, and for admins to manage products and view orders.
 
 ---
 
 ## 🗂 Project Structure
-
+```bash
 MiniMartBD/
 ├── assets/
 │   ├── css/
@@ -41,7 +46,7 @@ MiniMartBD/
 ├── register.php               <-- User registration
 ├── logout.php                 <-- User logout
 └── .htaccess                  <-- Optional for URL rewriting
-
+```
 
 ---
 
@@ -72,15 +77,17 @@ MiniMartBD/
 
 ```bash
 git clone https://github.com/niloyahmadramjan/minimartbd.git
-
+```
 Start XAMPP (Apache + MySQL)
 
 Create a MySQL database and import the SQL file (if any)
 
 Update database credentials in includes/db.php
 
-Open your browser: http://localhost/minimardbd/
-
+Open your browser: 
+```bash
+http://localhost/minimardbd/
+```
 
 📁 Folder Structure Explained
 
