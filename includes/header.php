@@ -28,7 +28,7 @@ session_start();
 <body class="bg-gray-50 font-sans">
 
   <!-- Top Discount Bar -->
-  <div class="bg-emerald-600 text-white text-center py-2 text-sm font-medium">
+  <div class="bg-red-600 text-white text-center py-2 text-sm font-medium">
     Get Upto 25% Discount On First Order: <span class="font-bold">GET25OFF</span> - <a href="#" class="underline hover:no-underline">SHOP NOW →</a>
   </div>
 
