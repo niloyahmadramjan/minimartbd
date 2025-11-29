@@ -1,157 +1,121 @@
 <?php
 session_start();
+
+// Get cart count (works with session or DB later)
+$cartCount = 0;
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $cartCount += $item['quantity'] ?? 1;
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MiniMartBD</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Icons (Feather Icons CDN) -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
   <script src="https://unpkg.com/feather-icons"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .cart-pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+  </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50">
 
-  <!-- Top Discount Bar -->
-  <div class="bg-red-600 text-white text-center py-2 text-sm font-medium">
-    Get Upto 25% Discount On First Order: <span class="font-bold">GET25OFF</span> - <a href="#" class="underline hover:no-underline">SHOP NOW →</a>
+  <!-- Top Offer Bar -->
+  <div class="bg-gradient-to-r from-pink-600 via-red-600 to-rose-600 text-white text-center py-3 text-sm font-bold shadow-lg">
+    <i class="fas fa-gift mr-2"></i>
+    Get 25% OFF on First Order! Use Code: <span class="text-yellow-300">GET25OFF</span>
+    <a href="#" class="ml-3 underline hover:no-underline font-extrabold">SHOP NOW</a>
   </div>
 
   <!-- Main Header -->
-  <header class="bg-white shadow-sm border-b">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col lg:flex-row items-center justify-between py-4 gap-4">
+  <header class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
 
         <!-- Logo -->
-        <div class="flex items-center">
-          <a href="index.php" class="flex items-center space-x-3">
-            <div class="bg-emerald-600 text-white p-3 rounded-xl">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 7L13 15L8.5 10.5L3 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M21 7H15M21 7V13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <span class="text-2xl font-bold text-emerald-600">MiniMartBD</span>
-          </a>
-        </div>
+        <a href="index.php" class="flex items-center space-x-4 group">
+          <div class="bg-gradient-to-br from-emerald-500 to-teal-600 p-4 rounded-2xl shadow-xl group-hover:scale-110 transition duration-300">
+            <i class="fas fa-store text-white text-3xl"></i>
+          </div>
+          <div>
+            <h1 class="text-3xl font-black bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+              MiniMartBD
+            </h1>
+            <p class="text-xs font-medium text-gray-500 tracking-wider">Fresh • Fast • Everyday</p>
+          </div>
+        </a>
 
-        <!-- Search Bar -->
-        <div class="w-full max-w-2xl">
-          <div class="flex">
-            <button class="bg-gray-100 px-5 flex border border-r-0 border-gray-300 rounded-l-lg text-gray-600 hover:bg-gray-200 transition hidden md:block">
-             Categories
-            </button>
-            <input type="text" placeholder="Search product here..." class="w-full px-4 py-3 border border-gray-300 focus:outline-none focus:border-emerald-600">
-            <button class="bg-emerald-600 text-white px-6 rounded-r-lg hover:bg-emerald-700 transition">
-              <i data-feather="search" class="w-5 h-5"></i>
+        <!-- Search Bar (Desktop + Mobile) -->
+        <div class="flex-1 max-w-2xl mx-8">
+          <div class="relative">
+            <input 
+              type="text" 
+              placeholder="Search for products, brands and more..." 
+              class="w-full px-6 py-4 pl-14 rounded-full border-2 border-gray-200 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-100 transition shadow-inner text-gray-700 font-medium"
+            >
+            <i class="fas fa-search absolute left-5 top-5 text-emerald-600 text-xl"></i>
+            <button class="absolute right-2 top-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-bold transition shadow-md">
+              Search
             </button>
           </div>
         </div>
 
-        <!-- Right Icons & Cart -->
-        <div class="flex items-center space-x-6 text-gray-700">
+        <!-- Right Side: User + Cart -->
+        <div class="flex items-center space-x-8">
 
-          <!-- Track Order -->
-          <a href="#" class="hidden md:flex items-center space-x-2 hover:text-emerald-600 transition">
-            <i data-feather="package" class="w-5 h-5"></i>
-            <span class="text-sm font-medium">Track Order</span>
-          </a>
-
-          <!-- Help Center -->
-          <a href="#" class="hidden md:flex items-center space-x-2 hover:text-emerald-600 transition">
-            <i data-feather="help-circle" class="w-5 h-5"></i>
-            <span class="text-sm font-medium">Help Center</span>
-          </a>
-
-          <!-- Language & Currency -->
-          <div class="flex items-center space-x-4 text-sm">
-            <select class="border-none bg-transparent focus:outline-none cursor-pointer">
-              <option>English</option>
-            </select>
-            <select class="border-none bg-transparent focus:outline-none cursor-pointer">
-              <option>$ USD</option>
-              <option>৳ BDT</option>
-            </select>
-          </div>
-
-          <!-- User & Cart -->
-          <div class="flex items-center space-x-5">
-            <?php if(isset($_SESSION['user'])): ?>
-              <div class="flex items-center space-x-3">
-                <i data-feather="user" class="w-6 h-6"></i>
-                <div>
-                  <p class="text-xs text-gray-500">Hello,</p>
-                  <p class="font-semibold"><?php echo htmlspecialchars($_SESSION['user']); ?></p>
-                </div>
+          <!-- User Account -->
+          <?php if(isset($_SESSION['user'])): ?>
+            <div class="flex items-center space-x-4 group">
+              <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                <?= strtoupper(substr($_SESSION['user'], 0, 1)) ?>
               </div>
-              <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 text-sm">Logout</a>
-            <?php else: ?>
-              <a href="login.php" class="hover:text-emerald-600">
-                <i data-feather="user" class="w-6 h-6"></i>
+              <div class="hidden lg:block">
+                <p class="text-xs text-gray-500">Welcome back</p>
+                <p class="font-bold text-gray-800"><?= htmlspecialchars($_SESSION['user']) ?></p>
+              </div>
+              <a href="logout.php" class="bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-xl font-bold text-sm transition shadow">
+                Logout
               </a>
-            <?php endif; ?>
-
-            <a href="cart.php" class="relative hover:text-emerald-600">
-              <i data-feather="shopping-cart" class="w-7 h-7"></i>
-              <span class="absolute -top-2 -right-2 bg-emerald-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">0</span>
-              <span class="ml-2 font-semibold">$0.00</span>
+            </div>
+          <?php else: ?>
+            <a href="login.php" class="flex items-center  bg-emerald-600 hover:bg-emerald-700 text-white px-7 rounded-2xl font-bold transition shadow-xl hover:shadow-2xl transform hover:scale-105">
+              <i class="fas fa-user-plus text-xl"></i>
+              <span>Login</span>
             </a>
-          </div>
+          <?php endif; ?>
+
+          <!-- Cart -->
+          <a href="cart.php" class="relative group">
+            <div class=" bg-gradient-to-br py-2 items-center text-center from-emerald-500 to-teal-600 rounded-2xl shadow-xl group-hover:shadow-2xl transition transform group-hover:scale-110">
+              <i class="fas fa-shopping-cart text-center text-white text-xl"></i>
+            </div>
+            <?php if($cartCount > 0): ?>
+              <span class="absolute -top-3 -right-3 bg-red-500 text-white text-sm font-bold rounded-full w-9 h-9 flex items-center justify-center shadow-2xl cart-pulse border-4 border-white">
+                <?= $cartCount ?>
+              </span>
+            <?php else: ?>
+              <span class="absolute -top-3 -right-3 bg-gray-400 text-white text-xs rounded-full w-8 h-8 flex items-center justify-center shadow-lg border-4 border-white">
+                0
+              </span>
+            <?php endif; ?>
+            <span class="ml-4 font-bold text-xl text-emerald-600 hidden lg:inline">$0.00</span>
+          </a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Navigation Menu -->
-  <nav class="bg-white border-b">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between py-4">
-        <div class="flex items-center space-x-8">
-          <button class="lg:hidden">
-            <i data-feather="menu" class="w-6 h-6"></i>
-          </button>
-          <a href="#" class="hidden lg:flex items-center space-x-3 text-emerald-600 font-bold">
-            <i data-feather="grid" class="w-5 h-5"></i>
-            <span>SHOP BY CATEGORIES</span>
-            <i data-feather="chevron-down" class="w-4 h-4"></i>
-          </a>
-
-          <ul class="hidden lg:flex items-center space-x-8 font-medium text-gray-700">
-            <li><a href="index.php" class="hover:text-emerald-600 transition">HOME</a></li>
-            <li><a href="#" class="hover:text-emerald-600 transition">SHOP <i data-feather="chevron-down" class="w-4 h-4 inline"></i></a></li>
-            <li><a href="#" class="hover:text-emerald-600 transition">CATEGORIES <span class="bg-orange-500 text-white text-xs px-2 py-1 rounded">SALE</span></a></li>
-            <li><a href="#" class="hover:text-emerald-600 transition text-red-600 font-bold">PRODUCTS HOT <i data-feather="flame" class="w-5 h-5 inline"></i></a></li>
-            <li><a href="#" class="hover:text-emerald-600 transition">TOP DEALS <i data-feather="chevron-down" class="w-4 h-4 inline"></i></a></li>
-            <li><a href="#" class="hover:text-emerald-600 transition">ELEMENTS <i data-feather="chevron-down" class="w-4 h-4 inline"></i></a></li>
-          </ul>
-        </div>
-
-        <div class="flex items-center space-x-3 text-emerald-600 font-bold">
-          <i data-feather="zap" class="w-6 h-6"></i>
-          <span>TODAY'S DEAL</span>
-        </div>
-      </div>
-    </div>
-  </nav>
-
   <script>
-    // Initialize feather icons
-    feather.replace();
+    // Replace feather icons
+    feather?.replace();
   </script>
 </body>
 </html>

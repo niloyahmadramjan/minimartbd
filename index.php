@@ -2,7 +2,7 @@
 <?php include 'includes/hero_slider.php'; ?>  
 <?php include 'includes/products.php'; ?>
 
-<div class="container mx-auto px-4">
+<div class=" max-w-7xl mx-auto px-4">
 
 <!-- ★★★★★ SECTION 1: MODERN CATEGORY GRID ★★★★★ -->
 <section class="my-20">
